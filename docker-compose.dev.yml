@@ -1,0 +1,18 @@
+services:
+  extraca_receita:
+    build:
+      context: .
+      target: develop
+    command: tail -f /dev/null 
+    container_name: extraca_receita
+    volumes:
+      - folder:/var/log/app
+
+volumes:
+  extracao_receita_volume:
+    name: folder
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '.'

@@ -1,0 +1,24 @@
+services:
+  extraca_receita:
+    build:
+      context: .
+      target: prod
+    command: >
+      python -u main.py
+      >> /usr/src/logs/success.log 
+      2>> /usr/src/logs/error.log
+    container_name: extraca_receita
+    volumes:
+      - logs:/usr/src/logs
+
+volumes:
+  extracao_receita_logss:
+    name: logs
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/c/Users/Thiago/Documents/logs'
+
+
+      
